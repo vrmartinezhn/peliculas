@@ -1,9 +1,9 @@
 
 
-String host = 'api.themoviedb.org';
+String hostApi = 'api.themoviedb.org';
 
-String endpoint = '/3/movie/popular';
+String endpointPopulares = '/3/movie/popular';
 
 String moviesTopRated = '....';
 
-String token = 'coloquen su token';
+String token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWFhYWIzYzM0ODhmZDBlYWVkNThiN2NiODIyOTRlOSIsIm5iZiI6MTc5Mjg2OTMwNS45Njg5OTk5LCJzdWIiOiI2YWRkMDNiOTRiZDdmYzUzMDBkODE5ZGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.S8EOwyr8CJFFt_K7i40tjqUHJjOhOkmuZvp7o7OJZIA';

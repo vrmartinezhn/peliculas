@@ -1,14 +1,14 @@
 // To parse this JSON data, do
 //
-//     final empty = emptyFromJson(jsonString);
+//     final peliculasModel = peliculasModelFromJson(jsonString);
 
 import 'dart:convert';
 
-Empty emptyFromJson(String str) => Empty.fromJson(json.decode(str));
+PeliculasModel peliculasModelFromJson(String str) => PeliculasModel.fromJson(json.decode(str));
 
-String emptyToJson(Empty data) => json.encode(data.toJson());
+String peliculasModelToJson(PeliculasModel data) => json.encode(data.toJson());
 
-class Empty {
+class PeliculasModel {
     final bool adult;
     final String backdropPath;
     final List<int> genreIds;
@@ -25,7 +25,7 @@ class Empty {
     final double voteAverage;
     final int voteCount;
 
-    Empty({
+    PeliculasModel({
         required this.adult,
         required this.backdropPath,
         required this.genreIds,
@@ -43,7 +43,7 @@ class Empty {
         required this.voteCount,
     });
 
-    factory Empty.fromJson(Map<String, dynamic> json) => Empty(
+    factory PeliculasModel.fromJson(Map<String, dynamic> json) => PeliculasModel(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),

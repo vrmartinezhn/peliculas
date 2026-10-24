@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
+import 'package:peliculas/components/shared/request_model.dart';
 import 'package:peliculas/components/utils/constantes.dart';
 
 class RequestHandler {
@@ -43,7 +44,7 @@ class RequestHandler {
 
     try {
       if (connectivityResult != ConnectivityResult.none) {
-        final url = Uri.https(host);
+        final url = Uri.https(hostApi);
 
         final response = await http.post(url,
             headers: <String, String>{

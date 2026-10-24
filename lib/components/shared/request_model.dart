@@ -23,7 +23,8 @@ class RequestModel {
 
     factory RequestModel.fromJson(Map<String, dynamic> json) => RequestModel(
         page: json["page"],
-        results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+        results: json["results"] == null ? []
+                                : List<dynamic>.from(json["results"]),
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
     );
