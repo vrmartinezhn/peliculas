@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:peliculas/components/movies/models/peliculas_model.dart';
+import 'package:peliculas/components/movies/views/pantalla_imagen.dart';
 
 class CardPeliculas extends StatelessWidget {
   const CardPeliculas({super.key, required this.pelicula});
@@ -16,14 +17,23 @@ class CardPeliculas extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Imagen superior
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-            child: Image.network(
-              'https://image.tmdb.org/t/p/w500${pelicula.posterPath}',
-              height: 180,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) =>
-                  const Icon(Icons.broken_image, size: 80),
+          GestureDetector(
+            onTap: (){
+              Get.to(PantallaImagen(
+                  pathImagen: 'https://image.tmdb.org/t/p/w500${pelicula.posterPath}', 
+                  tituloPelicula: pelicula.title
+                )
+              );
+            },
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+              child: Image.network(
+                'https://image.tmdb.org/t/p/w500${pelicula.posterPath}',
+                height: 180,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.broken_image, size: 80),
+              ),
             ),
           ),
 

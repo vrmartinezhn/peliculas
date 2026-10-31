@@ -14,9 +14,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Películas'),
-        ),
         body: Home(),
       ),
     );
