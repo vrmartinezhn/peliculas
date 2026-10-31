@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:peliculas/components/movies/views/peliculas_view.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -7,11 +8,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text('Información de Películas')
-        ],
-      ),
+      body: PeliculasTendenciasView(),
     );
   }
 }

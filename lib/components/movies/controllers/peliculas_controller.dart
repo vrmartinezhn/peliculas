@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:peliculas/components/movies/controllers/peliculas_model.dart';
+import 'package:peliculas/components/movies/models/peliculas_model.dart';
 import 'package:peliculas/components/shared/request_handler.dart';
 import 'package:peliculas/components/shared/request_model.dart';
 import 'package:peliculas/components/utils/constantes.dart';
@@ -16,6 +16,14 @@ class PeliculasController extends GetxController{
   // late indica que la variable sera leida despues
   // su contenido o valor sera evaluado mas adelante en la aplicación
   late RequestModel response;
+
+  // sobreescribir el metodo oninit del controlador
+  // cuando se mande a llamar este controlador, se ejecutará el método getPeliculas
+  @override
+  void onInit() async{
+    super.onInit();
+    response = await getPeliculas();
+  }
 
   // variable que tendra la información de las películas
   // se inicializa como una lista vacia
