@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:peliculas/components/movies/models/series_model.dart';
+import 'package:peliculas/components/series/models/series_model.dart';
 import 'package:peliculas/components/shared/request_handler.dart';
 import 'package:peliculas/components/shared/request_model.dart';
 import 'package:peliculas/components/utils/constantes.dart';

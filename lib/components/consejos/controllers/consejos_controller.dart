@@ -16,6 +16,7 @@ class ConsejosController extends GetxController {
   void onInit() async {
     super.onInit();
     // llamando el método para obtener los consejos
+    response = await getConsejos();
   }
 
   final Rx<ConsejosModel?> _consejosModel = Rx<ConsejosModel?>(null);

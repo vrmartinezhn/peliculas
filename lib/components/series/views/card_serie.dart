@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:peliculas/components/movies/models/series_model.dart';
+import 'package:peliculas/components/series/models/series_model.dart';
 
 class CardSeries extends StatelessWidget {
   const CardSeries({super.key, required this.serie});

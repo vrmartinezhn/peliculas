@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:peliculas/components/movies/controllers/series_controller.dart';
-import 'package:peliculas/components/movies/views/card_serie.dart';
+import 'package:peliculas/components/series/controllers/series_controller.dart';
+import 'package:peliculas/components/series/views/card_serie.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class SeriesListasView extends StatelessWidget {

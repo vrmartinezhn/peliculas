@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:peliculas/components/consejos/views/consejos_view.dart';
 import 'package:peliculas/components/movies/views/peliculas_view.dart';
-import 'package:peliculas/components/movies/views/series_view.dart';
+import 'package:peliculas/components/series/views/series_view.dart';
 import 'package:peliculas/components/shared/menu_lateral.dart';
 import 'package:peliculas/components/shared/navigation_controller.dart';
 
@@ -11,7 +12,7 @@ class Home extends StatelessWidget {
   // inyectar el controlador
   final NavigationController navigationController = Get.put(NavigationController());
 
-  final List<Widget> vistas = [PeliculasTendenciasView(), SeriesListasView(), Center()];
+  final List<Widget> vistas = [PeliculasTendenciasView(), SeriesListasView(), ConsejosView()];
 
   @override
   Widget build(BuildContext context) {
