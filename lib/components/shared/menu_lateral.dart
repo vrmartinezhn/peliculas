@@ -13,7 +13,7 @@ class MenuLateral extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(child: Text('Peliculas')),
+          DrawerHeader(child: Text('Menú')),
           ListTile(
             leading: Icon(Icons.movie),
             title: Text('Peliculas'),
