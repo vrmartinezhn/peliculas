@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:peliculas/components/movies/models/series_model.dart';
 import 'package:peliculas/components/shared/request_handler.dart';
 import 'package:peliculas/components/shared/request_model.dart';
 import 'package:peliculas/components/utils/constantes.dart';
@@ -15,18 +16,20 @@ class SeriesController extends GetxController{
     response = await getSeries();
   }
 
+  final RxList<SeriesModel> _listaSeries = <SeriesModel>[].obs;
+
   Future<RequestModel> getSeries() async {
     cargando = true;
 
     final data = await _request.requestGet(host: hostApi, endpoint: endpointSeries);
+    
     if(data.results.isNotEmpty){
-      //listaSeries = data.results.map((i) => SeriesModelXXXXX)
+      listaSeries = data.results.map((i) => SeriesModel.fromJson(i)).toList();
     }
 
     cargando = false;
 
     return data;
-
   }
 
 
@@ -34,6 +37,8 @@ class SeriesController extends GetxController{
   bool get cargando => _cargando.value;
   set cargando(bool value) => _cargando.value = value;
 
-  
+  List<SeriesModel> get listaSeries => _listaSeries;
+  set listaSeries(List<SeriesModel> series) =>
+                              listaSeries.assignAll(series);
 
 }

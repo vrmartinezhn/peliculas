@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:peliculas/components/movies/controllers/series_controller.dart';
+import 'package:peliculas/components/movies/views/card_serie.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class SeriesListasView extends StatelessWidget {
-  const SeriesListasView({super.key});
+  SeriesListasView({super.key});
+
+  // inyectando el controlar de series
+  final _seriesController = Get.put<SeriesController>(
+    SeriesController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +19,31 @@ class SeriesListasView extends StatelessWidget {
       appBar: AppBar(
         title: Text('Series'),
       ),
-      body: Text("data"),
+      body: Obx(
+        () => _seriesController.cargando
+        ? Skeletonizer(
+            enabled: true,
+            child: Center(
+              child: Text(
+                'Cargando...',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              ),
+            ),
+        )
+        : GetBuilder(
+          init: _seriesController,
+          builder: (SeriesController controller){
+            return ListView.builder(
+              itemCount: controller.listaSeries.length,
+              padding: EdgeInsets.all(12),
+              itemBuilder: (context, index){
+                final serie = controller.listaSeries[index];
+                return CardSeries(serie: serie);
+              },
+            );
+          },
+        ),
+      ),
     );
   }
 }
