@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:peliculas/components/consejos/controllers/consejos_controller.dart';
+import 'package:peliculas/components/consejos/models/consejos_model.dart';
 
 class ConsejosView extends StatelessWidget {
   ConsejosView({super.key});
@@ -20,9 +21,27 @@ class ConsejosView extends StatelessWidget {
               Obx(
                 () => _controller.cargando
                 ? CircularProgressIndicator()
-                : Text(
-                  _controller.consejosModel?.advice ?? 'Sin datos',
-                  style: TextStyle(fontSize: 40),
+                : Column(
+                  spacing: 20,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.amber,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          _controller.consejosModel?.advice ?? 'Sin datos',
+                          style: TextStyle(fontSize: 50),
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: _controller.getConsejos, 
+                      child: Text('Nuevo Consejo')
+                    )
+                  ],
                 )
               )
             ],
