@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:peliculas/components/movies/views/pantalla_creditos.dart';
 import 'package:peliculas/components/movies/models/peliculas_model.dart';
 import 'package:peliculas/components/movies/views/pantalla_imagen.dart';
 
@@ -18,15 +19,19 @@ class CardPeliculas extends StatelessWidget {
         children: [
           // Imagen superior
           GestureDetector(
-            onTap: (){
-              Get.to(PantallaImagen(
-                  pathImagen: 'https://image.tmdb.org/t/p/w500${pelicula.posterPath}', 
-                  tituloPelicula: pelicula.title
-                )
+            onTap: () {
+              Get.to(
+                PantallaImagen(
+                  pathImagen:
+                      'https://image.tmdb.org/t/p/w500${pelicula.posterPath}',
+                  tituloPelicula: pelicula.title,
+                ),
               );
             },
             child: ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(16),
+              ),
               child: Image.network(
                 'https://image.tmdb.org/t/p/w500${pelicula.posterPath}',
                 height: 180,
@@ -45,22 +50,22 @@ class CardPeliculas extends StatelessWidget {
               children: [
                 Text(
                   pelicula.title,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   pelicula.overview,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
+                  style: Theme.of(context).textTheme.bodyMedium
+                      ?.copyWith(color: Colors.grey[700]),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                      onPressed: null,
+                      onPressed: () {
+                        Get.to(() => PantallaCreditos(pelicula: pelicula));
+                      },
                       child: Text(
                         'Ver actores',
                         style: TextStyle(color: Colors.blue),

@@ -1,38 +1,47 @@
 import 'package:get/get.dart';
 import 'package:peliculas/components/movies/models/creditos_model.dart';
 import 'package:peliculas/components/shared/request_handler.dart';
-import 'package:peliculas/components/shared/request_model.dart';
 import 'package:peliculas/components/utils/constantes.dart';
 
-class CreditosController extends GetxController{
+class CreditosController extends GetxController {
+  CreditosController({required this.movieId});
+
+  final int movieId;
 
   final _cargando = false.obs;
   final _request = RequestHandler();
-  late RequestModel response;
 
   @override
-  void onInit() async{
+  void onInit() {
     super.onInit();
-    response = await getCreditos();
+    getCreditos();
   }
 
   final RxList<CreditosModel> _listaCreditos = <CreditosModel>[].obs;
 
-  Future<RequestModel> getCreditos() async {
+  Future<void> getCreditos() async {
     cargando = true;
+    update();
 
-    final data = await _request.requestGet(host: hostApi, endpoint: endpointCreditos);
+    try {
+      final endpoint = endpointCreditos.replaceFirst(
+        '{movie_id}',
+        movieId.toString(),
+      );
+      final data = await _request.requestGet(host: hostApi, endpoint: endpoint);
 
-    if(data.results.isNotEmpty){
-      listaCreditos = data.results.map((i) => CreditosModel.fromJson(i)).toList();
+      if (data.results.isNotEmpty) {
+        listaCreditos = data.results
+            .map((i) => CreditosModel.fromJson(i))
+            .toList();
+      } else {
+        listaCreditos = [];
+      }
+    } finally {
+      cargando = false;
+      update();
     }
-
-    cargando = false; 
-
-    return data;
   }
-  
-
 
   // getters y setters
   bool get cargando => _cargando.value;
@@ -40,7 +49,5 @@ class CreditosController extends GetxController{
 
   List<CreditosModel> get listaCreditos => _listaCreditos;
   set listaCreditos(List<CreditosModel> creditos) =>
-                              listaCreditos.assignAll(creditos);
-
-
+      listaCreditos.assignAll(creditos);
 }
