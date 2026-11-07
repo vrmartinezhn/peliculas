@@ -3,6 +3,7 @@
 String hostApi = 'api.themoviedb.org';
 
 String endpointPopulares = '/3/movie/popular';
+String endpointSeries = '/3/tv/on_the_air';
 
 String moviesTopRated = '....';
 

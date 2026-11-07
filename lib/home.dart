@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:peliculas/components/movies/views/peliculas_view.dart';
+import 'package:peliculas/components/movies/views/series_view.dart';
 import 'package:peliculas/components/shared/menu_lateral.dart';
 import 'package:peliculas/components/shared/navigation_controller.dart';
 
@@ -10,15 +11,13 @@ class Home extends StatelessWidget {
   // inyectar el controlador
   final NavigationController navigationController = Get.put(NavigationController());
 
-  final List<Widget> vistas = [PeliculasTendenciasView(), Center(), Center()];
+  final List<Widget> vistas = [PeliculasTendenciasView(), SeriesListasView(), Center()];
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        appBar: AppBar(
-          title: Text('Peliculas'),
-        ),
+        appBar: AppBar(),
         drawer: MenuLateral(),
         body: vistas[navigationController.opcionSeleccionada.value], // se mostrara la lista
         bottomNavigationBar: BottomNavigationBar(
