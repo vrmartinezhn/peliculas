@@ -31,8 +31,8 @@ class MenuLateral extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.abc),
-            title: Text('Otra cosa'),
+            leading: Icon(Icons.lightbulb),
+            title: Text('Consejos'),
             onTap: (){
               navigationController.cambiarPagina(2);
               Navigator.pop(context);

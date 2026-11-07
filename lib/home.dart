@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
           items: [
             BottomNavigationBarItem(label: 'Peliculas', icon: Icon(Icons.home)),
             BottomNavigationBarItem(label: 'Series', icon: Icon(Icons.tv)),
-            BottomNavigationBarItem(label: 'Otra cosa', icon: Icon(Icons.abc)),
+            BottomNavigationBarItem(label: 'Consejos', icon: Icon(Icons.lightbulb)),
           ],
           onTap: navigationController.cambiarPagina,
         ),

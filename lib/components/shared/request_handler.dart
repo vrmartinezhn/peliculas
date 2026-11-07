@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
+import 'package:peliculas/components/consejos/models/consejos_model.dart';
 import 'package:peliculas/components/shared/request_model.dart';
 import 'package:peliculas/components/utils/constantes.dart';
 
@@ -35,6 +36,37 @@ class RequestHandler {
     }
 
     return RequestModel.fromJson({});
+  }
+
+
+  Future<ConsejosResponse> requestGetConsejos({required String host, required String endpoint}) async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+
+    try {
+      if (connectivityResult != ConnectivityResult.none) {
+      final url = Uri.https(host, endpoint);
+
+        final response = await http.get(
+          url,
+          headers: <String, String>{
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer $token',
+          },
+        );
+
+        return ConsejosResponse.fromJson(json.decode(response.body));
+      }
+    } catch (error) {
+      return ConsejosResponse.fromJson({
+        'success': false,
+        'message': error.toString(),
+        'data': null,
+        'action': 'server_error'
+      });
+    }
+
+    return ConsejosResponse.fromJson({});
   }
 
 
