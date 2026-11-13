@@ -30,6 +30,7 @@ class ConsejosController extends GetxController {
       endpoint: endpointConsejos
     );
 
+    // ignore: unnecessary_null_comparison
     if (data.slip != null) {
       consejoActual = data.slip;
     }

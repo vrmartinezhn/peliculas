@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:peliculas/components/movies/controllers/creditos_controller.dart';
 import 'package:peliculas/components/movies/models/peliculas_model.dart';
+import 'package:peliculas/components/movies/views/pantalla_peliculas_actor.dart';
 
 class PantallaCreditos extends StatelessWidget {
   const PantallaCreditos({super.key, required this.pelicula});
@@ -35,6 +36,21 @@ class PantallaCreditos extends StatelessWidget {
                 subtitle: actor.character == null
                     ? null
                     : Text(actor.character!),
+                trailing: const Icon(
+                  Icons.chevron_right,
+                  color: Colors.grey,
+                ),
+                onTap: (){
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(
+                      builder: (context) => PantallaPeliculasActor(
+                        nombreActor: actor.name,
+                        actorId: actor.id,
+                        )
+                    )
+                  );
+                },
               );
             },
           );

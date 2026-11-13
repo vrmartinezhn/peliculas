@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:peliculas/components/consejos/controllers/consejos_controller.dart';
-import 'package:peliculas/components/consejos/models/consejos_model.dart';
 
 class ConsejosView extends StatelessWidget {
   ConsejosView({super.key});
